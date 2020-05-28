@@ -84,6 +84,8 @@ def search_movie(movie_name):
         if search_movie_response['results']:
             search_movie_list = search_movie_response['results']
             search_movie_results = process_results(search_movie_list)
+        else: 
+            search_movie_results = {"message": 'No movie found'}
 
 
     return search_movie_results    

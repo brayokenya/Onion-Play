@@ -53,8 +53,13 @@ def search(movie_name):
     movie_name_list = movie_name.split(" ")
     movie_name_format = "+".join(movie_name_list)
     searched_movies = search_movie(movie_name_format)
-    title = f'search results for {movie_name}'
-    return render_template('search.html',movies = searched_movies)
+    # import pdb; pdb.set_trace()
+    if isinstance(searched_movies, list):
+        title = f'search results for {movie_name}'
+        return render_template('search.html',movies = searched_movies)
+
+    else: 
+        return render_template('notfound.html', message = searched_movies)
 
 
 @main.route('/movie/review/new/<int:id>', methods = ['GET','POST'])
